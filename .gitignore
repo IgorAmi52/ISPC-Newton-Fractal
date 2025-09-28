@@ -1,0 +1,46 @@
+# C++/ISPC project .gitignore for CMake builds
+# Build directories
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Compiled object files, binaries, libraries
+*.o
+*.obj
+*.so
+*.dll
+*.exe
+*.out
+*.a
+*.lib
+*.dylib
+
+# ISPC generated files
+*.ispc.o
+*.ispc.exe
+*.ispc.out
+*.ispc.h
+*.ispc.cpp
+
+# IDE and editor files
+*.swp
+*.swo
+*.user
+*.DS_Store
+*.vscode/
+.idea/
+
+# Other
+*.log
+*.tmp
+*.bak
+*.old
+
+# Ignore test/build artifacts
+Testing/
+CTestTestfile.cmake
+
+# Ignore by-products of packaging
+_install/
