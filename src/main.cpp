@@ -1,10 +1,26 @@
-
+#include <algorithm>
+#include <vector>
+#include <iostream>
 #include "config.hpp"
 #include "roots.hpp"
 #include "host_render.hpp"
 #include "image_ppm.hpp"
-#include <vector>
-#include <iostream>
+#include "image_png.hpp"
+
+void write_image(const Params& params, const std::vector<float>& outRGB) {
+    std::string outPath = params.outPath;
+    if (params.outputFormat == "png") {
+        if (outPath.size() < 4 || outPath.substr(outPath.size()-4) != ".png")
+            outPath += ".png";
+        write_png(outPath.c_str(), params.width, params.height, outRGB);
+    } else {
+        if (outPath.size() < 4 || outPath.substr(outPath.size()-4) != ".ppm")
+            outPath += ".ppm";
+        write_ppm(outPath.c_str(), params.width, params.height, outRGB);
+    }
+    std::cout << "Image written to: " << outPath << std::endl;
+}
+
 
 int main(int argc, char* argv[]) {
     Params params = parse_args(argc, argv);
@@ -19,7 +35,7 @@ int main(int argc, char* argv[]) {
 
     std::vector<float> outRGB(params.width * params.height * 3, 0.0f);
     render_image(params, rootsRe, rootsIm, outRGB);
-    write_ppm(params.outPath.c_str(), params.width, params.height, outRGB);
-    std::cout << "Image written to: " << params.outPath << std::endl;
+
+    write_image(params, outRGB);
     return 0;
 }

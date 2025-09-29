@@ -10,7 +10,9 @@ struct Params {
     float eps = 1e-6f;
     float xmin = -2.f, xmax = 2.f;
     float ymin = -2.f, ymax = 2.f;
-    std::string outPath = "newton.ppm";
+    std::string outPath = "newton";
+
+    std::string outputFormat = "png"; // "png" or "ppm"
 
     bool benchmark = false;
     int benchMinRows = 8;

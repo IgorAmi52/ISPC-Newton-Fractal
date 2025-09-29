@@ -9,6 +9,7 @@ Makefile
 
 *.ppm
 *.jpg
+*.png
 # Compiled object files, binaries, libraries
 *.o
 *.obj

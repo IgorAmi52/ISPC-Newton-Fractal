@@ -85,6 +85,7 @@ add_dependencies(newton gen_ispc)
 target_include_directories(newton PRIVATE
   ${CMAKE_BINARY_DIR}           # fractal_ispc.h (generated)
   ${CMAKE_SOURCE_DIR}/include
+  ${CMAKE_SOURCE_DIR}/third_party/stb
 )
 
 # Link ISPC object + tasksys
@@ -121,5 +122,10 @@ target_include_directories(test_ppm PRIVATE ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_D
 target_link_libraries(test_ppm PRIVATE ispc_tasksys)
 add_test(NAME test_ppm COMMAND test_ppm)
 
+add_executable(test_png tests/test_png.cpp)
+add_dependencies(test_png gen_ispc)
+target_include_directories(test_png PRIVATE ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/third_party/stb)
+target_link_libraries(test_png PRIVATE ispc_tasksys)
+add_test(NAME test_png COMMAND test_png)
 
 # ================================
