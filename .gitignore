@@ -6,6 +6,9 @@ CMakeCache.txt
 cmake_install.cmake
 Makefile
 
+
+*.ppm
+*.jpg
 # Compiled object files, binaries, libraries
 *.o
 *.obj
