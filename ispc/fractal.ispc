@@ -2,7 +2,7 @@
 
 inline float clamp01(float x) { return x < 0.0f ? 0.0f : (x > 1.0f ? 1.0f : x); }
 
-task void render_rows(uniform int width,
+static task void render_rows(uniform int width,
                       uniform int height,
                       uniform float xmin,
                       uniform float xmax,
@@ -91,9 +91,9 @@ export void render(uniform int width,
                    uniform float eps,
                    uniform float * uniform rootsRe,
                    uniform float * uniform rootsIm,
-                   float * uniform outRGB)
+                   float * uniform outRGB,
+                   uniform int rowsPerTask)
 {
-    uniform int rowsPerTask = 32;
     if (rowsPerTask < 1) rowsPerTask = 1;
 
     uniform int numTasks = (height + rowsPerTask - 1) / rowsPerTask;

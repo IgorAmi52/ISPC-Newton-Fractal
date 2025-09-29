@@ -25,6 +25,14 @@ Params parse_args(int argc, char* argv[]) {
             params.ymax = std::atof(argv[++i]);
         else if (std::strcmp(argv[i], "--outPath") == 0 && i+1 < argc)
             params.outPath = argv[++i];
+        else if (std::strcmp(argv[i], "--benchmark") == 0)
+            params.benchmark = true;
+        else if (std::strcmp(argv[i], "--benchMinRows") == 0 && i+1 < argc)
+            params.benchMinRows = std::atoi(argv[++i]);
+        else if (std::strcmp(argv[i], "--benchMaxRows") == 0 && i+1 < argc)
+            params.benchMaxRows = std::atoi(argv[++i]);
+        else if (std::strcmp(argv[i], "--benchStepRows") == 0 && i+1 < argc)
+            params.benchStepRows = std::atoi(argv[++i]);
     }
     return params;
 }
